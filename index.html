@@ -1,0 +1,38 @@
+<html>
+   <head>
+       {% if user != "" %}
+        <form method="get" action="/logout">
+           <p>Logged in as {{user}}</p>
+           <input type="submit" class="button" value="Log out", name="logout">
+        </form>
+       {% end %}
+      <h2>Path: {{ title }}</h2>
+   </head>
+   <body>
+      <form method="post">
+	<input type="submit" class="button" name="back_Button" value="..">
+      </form>
+    <form method="post">
+     <ul>
+       {% for dir in dirs %}
+         <li><input type="submit" class="button" name={{dir}} value={{dir}}></li>
+       {% end %}
+       {% for file in files %}
+         <li><a href={{"/download/" + file}}>{{file}}</a></li>
+       {% end %}
+     </ul>
+     </form>
+    <br>
+    {% if user != "" %}
+        <h2>Upload a file</h2>
+        <form enctype="multipart/form-data" method="post">
+            File: <input type="file" name="filearg" />
+            <br />
+            <input type="submit" value="Upload" name="upload"/>
+        </form>
+    {% end %}
+    {% if user == "" %}
+        <p>To start uploading files, you need to <a href="/login">Log in</a></p>
+    {% end %}
+   </body>
+</html>
