@@ -2,9 +2,9 @@ import tornado.ioloop
 import tornado.web
 import os
 
-root_path = "<YOUR-PATH>"
+root_path = "<YOUR-PATH>/"
 path = ""
-dir_list = os.listdir("part/")
+dir_list = os.listdir("<YOUR-PATH>/")
 
 class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
